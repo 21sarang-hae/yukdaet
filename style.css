@@ -1,0 +1,27 @@
+:root {
+      --primary: #00F5FF;
+      --accent: #FF2E63;
+      --bg-dark: #050608;
+      --surface: #121418;
+      --surface-light: #1A1D24;
+      --text-main: #FFFFFF;
+      --text-muted: #A0AABF;
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg-dark); color: var(--text-main); font-family: var(--font-family); min-height: 100vh; overflow-x: hidden; }
+.background-blobs { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; pointer-events: none; }
+.blob { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.1; }
+.app-container { max-width: 900px; margin: 0 auto; padding: 0 1rem 2rem; }
+.glass-nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; position: sticky; top: 0; z-index: 1000; background: rgba(10, 11, 16, 0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+.hidden { display: none; }
+.view-section { padding-bottom: 15rem; }
+.channel-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+.channel-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border); padding: 0.75rem 1rem; display: flex; align-items: center; gap: 1rem; cursor: pointer; }
+.video-stack { display: flex; flex-direction: column; gap: 0.75rem; }
+.video-item { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); padding: 1rem; display: flex; align-items: center; gap: 1.25rem; cursor: pointer; }
+.video-thumb-container { width: 100px; height: 60px; overflow: hidden; }
+.video-thumbnail { width: 100%; height: 100%; object-fit: cover; }
+.comment-card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); padding: 1.5rem; margin-bottom: 1rem; }
+.reply-box { background: rgba(0, 245, 255, 0.05); border-left: 3px solid var(--primary); padding: 1.25rem; }
