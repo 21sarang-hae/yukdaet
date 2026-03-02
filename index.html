@@ -1,1 +1,91 @@
-<h1>Yukdaet</h1><p><a href="privacy.html">Privacy Policy</a>a></p></p></h1>
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="UTF-8">
+        <title>&#50977;&#45803;</title>
+      <link rel="stylesheet" href="style.css">
+      <style>
+                .hidden { display: none !important; }
+                .reply-box { margin-top: 10px; padding: 10px; background: rgba(0, 245, 255, 0.05); border-left: 3px solid #00F5FF; }
+            </style>
+  </head>
+  <body>
+        <main class="app-container">
+                  <nav class="glass-nav">
+                                <div id="back-btn" class="nav-icon hidden" style="cursor:pointer">Back</div>div>
+                                <div class="logo" id="logo-home" style="cursor:pointer"><h2>&#50977;&#45803;</h2></div>div>
+                              <div id="bookmark-btn" class="nav-icon" style="cursor:pointer">Bookmark</div>div>
+                  </nav>nav>
+                <section id="channel-view" class="view-section">
+                            <input type="text" id="channel-search" placeholder="Search Expert..." style="width:100%; padding:10px; margin:20px 0;">
+                            <div id="channel-list" class="channel-grid"></div>div>
+                </section>section>
+                <section id="video-view" class="view-section hidden">
+                            <div id="video-list" class="video-stack"></div>div>
+                </section>section>
+                <section id="content-view" class="view-section hidden">
+                            <h2 id="content-title"></h2>
+                            <div id="content-comments-list" class="comments-grid"></div>div>
+                </section>section>
+                <section id="bookmark-view" class="view-section hidden">
+                            <h2>My Books</h2>
+                            <div id="bookmark-list" class="comments-grid"></div>div>
+                </section>section>
+                <section id="search-results-view" class="view-section hidden">
+                            <h2 id="search-query-text"></h2>
+                            <div id="global-search-list" class="video-stack"></div>div>
+                </section>section>
+        </main>main>
+      <script>
+                const db = [
+                  { id: 'hjh', name: 'Ha Jung Hoon 119', specialty: 'Pediatrician', img: 'https://api.dicebear.com/7.x/initials/svg?seed=HJH' },
+                  { id: 'oey', name: 'Oh Eun Young TV', specialty: 'Psychiatrist', img: 'https://api.dicebear.com/7.x/initials/svg?seed=OEY' }
+                          ];
+                function switchView(id) {
+                              document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+                              document.getElementById(id).classList.remove('hidden');
+                              document.getElementById('back-btn').classList.toggle('hidden', id === 'channel-view');
+                }
+                function render() {
+                              const list = document.getElementById('channel-list');
+                              db.forEach(c => {
+                                                const card = document.createElement('div');
+                                                card.className = 'channel-card';
+                                                card.innerHTML = `<img src="${c.img}" style="width:32px"> <h3>${c.name}</h3>`;
+                                                card.onclick = () => {
+                                                                      document.getElementById('video-list').innerHTML = `
+                                                                                              <div class="video-item" onclick="showContent()"> [Expert] Baby Sleep Training </div>
+                                                                                                                  `;
+                                                                      switchView('video-view');
+                                                };
+                                                list.appendChild(card);
+                              });
+                }
+                function showContent() {
+                              document.getElementById('content-title').textContent = 'Baby Sleep Training';
+                              document.getElementById('content-comments-list').innerHTML = `
+                                              <div class="comment-card"> Mom: Baby cries. <div class="reply-box"> Expert: Try routine. <</div></div>`;
+                              switchView('content-view');
+                }
+                document.getElementById('channel-search').onkeydown = (e) => {
+                              if(e.key === 'Enter') {
+                                                document.getElementById('search-query-text').textContent = 'Results for "' + e.target.value + '"';
+                                                document.getElementById('global-search-list').innerHTML = '<div class="video-item">Expert: Sleep Training Result</div>';
+                                                switchView('search-results-view');
+                              }
+                };
+                document.getElementById('bookmark-btn').onclick = () => {
+                              document.getElementById('bookmark-list').innerHTML = '<div class="comment-card"> Saved: Sleep routine </div>';
+                              switchView('bookmark-view');
+                };
+                document.getElementById('logo-home').onclick = () => switchView('channel-view');
+                document.getElementById('back-btn').onclick = () => switchView('channel-view');
+                render();
+      </script>
+  </body>
+</html>
+      </script></h2></h2>
+  </body>
+      </style></title>
+  </head>
+</html>
