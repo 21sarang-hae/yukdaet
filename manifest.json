@@ -1,11 +1,17 @@
 {
   "name": "육댓 - 전문가 육아 답변 큐레이션",
   "short_name": "육댓",
+  "id": "/yukdaet/",
   "description": "육아 전문가들의 핵심 답변을 한눈에 모아보는 스마트 큐레이션 서비스",
-  "start_url": "/",
+  "start_url": "/yukdaet/",
   "display": "standalone",
   "background_color": "#0a0e17",
   "theme_color": "#0a0e17",
+  "lang": "ko-KR",
+  "categories": [
+    "education",
+    "parenting"
+  ],
   "icons": [
     {
       "src": "icon.png",
@@ -16,7 +22,8 @@
     {
       "src": "icon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "orientation": "portrait"
