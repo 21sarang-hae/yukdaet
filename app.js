@@ -330,7 +330,10 @@ document.addEventListener('DOMContentLoaded', () => {
                          onload="this.parentElement.classList.remove('skeleton')"
                          onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(c.name)}&backgroundColor=00f5ff&color=white';">
                 </div>
-                <h3>${c.name}</h3>
+                <div class="channel-info" style="flex-grow:1;">
+                    <h3 style="margin-bottom:2px;">${c.name}</h3>
+                    <div style="font-size: 0.7rem; color: var(--text-muted); opacity: 0.7;">Expert Channel</div>
+                </div>
                 <div class="badge-mini ${c.isLicensed ? 'professional-badge' : 'expert-badge'}">${c.isLicensed ? 'LICENSE' : 'EXPERT'}</div>
             `;
             card.onclick = () => { savedScrollPos = window.scrollY; showChannel(c); };
