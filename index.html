@@ -1,32 +1,191 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Yukdaet</title>
-      <link rel="stylesheet" href="style.css">
-  </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>육댓 - 전문가 답변 큐레이션</title>
+
+    <!-- Safari / Mobile PWA Optimization -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
-      <main class="app-container">
-                <nav class="glass-nav">
-                              <div id="back-btn" class="nav-icon hidden">Back</div>div>
-                              <div class="logo" id="logo-home"><span>Yukdaet</span></div>div>
-                </nav>nav>
-              <section id="channel-view" class="view-section">
-                          <div id="channel-list" class="channel-grid"></div>div>
-              </section>section>
-              <section id="video-view" class="view-section hidden">
-                          <h2 id="current-channel-name"></h2>h2>
-                          <div id="video-list" class="video-stack"></div>div>
-              </section>section>
-              <section id="content-view" class="view-section hidden">
-                          <h2 id="content-title"></h2>h2>
-                          <div id="video-iframe-placeholder" class="video-placeholder"></div>div>
-                          <div id="content-comments-list" class="comments-grid"></div>div>
-              </section>section>
-      </main>main>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="app-container">
+        <!-- 네비게이션 바 -->
+        <nav class="glass-nav">
+            <div id="back-btn" class="nav-icon hidden">←</div>
+            <div class="logo" id="logo-home" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                <img src="icon.png" alt="육댓 로고" style="width: 32px; height: 32px; object-fit: contain;">
+                <span
+                    style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; background: linear-gradient(135deg, var(--primary), #fff); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">육댓</span>
+            </div>
+            <div id="bookmark-btn" class="nav-icon">⭐</div>
+        </nav>
+
+        <!-- 1. 채널 목록 화면 (Home) -->
+        <section id="channel-view" class="view-section">
+            <header class="view-header">
+                <h2>신뢰할 수 있는 전문가의 답글 모음</h2>
+                <p>부모님들의 궁금점이 담긴 댓글 중 답변이 담긴 글을 모았습니다.</p>
+            </header>
+
+            <!-- 필터 및 검색 바 추가 -->
+            <div class="filter-container">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="channel-search" placeholder="채널명 또는 전문가 검색...">
+                </div>
+                <div class="filter-chips" id="category-filters">
+                    <button class="chip active" data-category="all">전체</button>
+                    <button class="chip" data-category="health">건강/보건</button>
+                    <button class="chip" data-category="mind">심리/훈육</button>
+                    <button class="chip" data-category="birth">임신/출산</button>
+                    <button class="chip" data-category="edu">교육/학습</button>
+                    <button class="chip" data-category="life">라이프/팁</button>
+                </div>
+            </div>
+
+            <div id="channel-list" class="channel-grid">
+                <!-- Channels injected here -->
+            </div>
+        </section>
+
+        <!-- 2. 영상 목록 화면 (Channel Detail) -->
+        <section id="video-view" class="view-section hidden">
+            <header class="view-header">
+                <div id="current-channel-specialty" class="badge-mini pro-tag">전문의</div>
+                <h2 id="current-channel-name">채널 이름</h2>
+                <p id="current-channel-desc">채널 설명이 여기에 들어갑니다.</p>
+
+                <div class="video-controls">
+                    <div class="search-bar video-search-bar">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="video-search" placeholder="이 채널의 영상 검색...">
+                    </div>
+                    <div class="sort-container">
+                        <select id="video-sort">
+                            <option value="viewCount">🔥 인기순</option>
+                            <option value="date">🕒 최신순</option>
+                        </select>
+                    </div>
+                </div>
+            </header>
+            <div id="video-list" class="video-stack">
+                <!-- Videos injected here -->
+            </div>
+        </section>
+
+        <!-- 3. 검색 결과 화면 (Global Search Results) -->
+        <section id="search-results-view" class="view-section hidden">
+            <div class="view-header">
+                <h2 class="section-title">통합 검색 결과</h2>
+                <p id="search-query-text"
+                    style="color: var(--text-muted); font-size: 0.9rem; margin-top: -1rem; margin-bottom: 2rem;">'키워드'에
+                    대한 전문가들의 답변입니다.</p>
+            </div>
+            <div id="global-search-list" class="video-list">
+                <!-- Search results injected here -->
+            </div>
+        </section>
+
+        <!-- 4. 상세 내용 화면 (Video Detail) -->
+        <section id="content-view" class="view-section hidden">
+            <div class="content-wrapper">
+                <!-- 비디오 제목 (Compact Header) -->
+                <div class="content-header-area">
+                    <h2 id="content-title">영상 제목</h2>
+                </div>
+
+                <!-- 비디오 플레이어 영역 -->
+                <div class="video-container">
+                    <div id="video-iframe-placeholder" class="video-placeholder">
+                        <span class="icon">📺</span>
+                        <p>전문가의 원본 영상을 확인하세요</p>
+                        <p class="notice-minor">유튜브 정책상 외부 재생이 제한될 경우 아래 '유튜브에서 영상보기' 버튼을 이용해 주세요.</p>
+                    </div>
+                </div>
+
+                <div class="action-row" style="margin-bottom: 2rem;">
+                    <a id="youtube-link" href="#" target="_blank" class="primary-action-btn">
+                        <span class="icon">🔗</span> 유튜브에서 영상보기
+                    </a>
+                </div>
+
+                <!-- 댓글 전용 검색바 추가 -->
+                <div class="comment-search-container" style="margin-bottom: 25px;">
+                    <div class="search-bar" style="max-width: none;">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="comment-local-search" placeholder="찾으시는 답변 키워드가 있나요? (예: 낮잠, 밤잠, 이유식)">
+                    </div>
+                </div>
+
+                <!-- 댓글 섹션 (Expert Q&A) -->
+                <div class="comments-section">
+                    <div class="section-title">EXPERT COMMENT & Q&A</div>
+                    <div id="content-comments-list" class="comments-grid">
+                        <!-- Comments injected here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 나의 저장소 화면 (Bookmarks) -->
+        <section id="bookmark-view" class="view-section hidden">
+            <header class="view-header">
+                <h1 style="font-weight: 800; font-size: 1.8rem; margin-bottom: 5px;">나의 저장소</h1>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">다시 보고 싶은 전문가의 답변들입니다.</p>
+            </header>
+            <div id="bookmark-list" class="comments-grid" style="margin-top: 2rem;">
+                <!-- Bookmarked comments injected here -->
+            </div>
+            <div id="bookmark-empty" class="empty-state hidden" style="padding: 100px 20px; text-align: center;">
+                <p style="font-size: 3rem; margin-bottom: 20px;">📦</p>
+                <p style="color: var(--text-muted);">아직 저장된 답변이 없습니다.</p>
+            </div>
+        </section>
+
+        <!-- 저작권 및 안내 푸터 (Always Fixed Bottom) -->
+        <footer id="global-footer" class="fixed-footer hidden">
+            <p id="copyright-text"
+                style="color: var(--primary); font-size: 0.7rem; font-weight: 800; margin-bottom: 0.4rem; opacity: 0.9;">
+                본 콘텐츠의 저작권은 해당 전문가 채널에 있습니다.
+            </p>
+            <p
+                style="font-size: 0.6rem; color: var(--text-muted); line-height: 1.4; max-width: 280px; margin: 0 auto; opacity: 0.6;">
+                YouTube 공식 API를 통해 제공되는 서비스이며,<br>
+                모두를 위한 육아 지식 큐레이션 플랫폼 '육댓'입니다.
+            </p>
+        </footer>
+    </main>
+
     <script src="app.js"></script>
+    <script>
+        // PWA 서비스 워커 등록
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker registered!'))
+                    .catch(err => console.log('Service Worker failed:', err));
+            });
+        }
+    </script>
 </body>
-</html>html></span>
-</body></title>
-  </head>
+
+</html>
