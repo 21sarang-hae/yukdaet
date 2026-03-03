@@ -43,12 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: 'smartmom', ytId: 'UC-FZjF-oF0Cvq699UNcG5Tg', category: 'health', name: '맘똑티비', description: '간호사 및 모유수유 전문가', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SmartMom', specialty: '신생아 케어 전문가', isLicensed: true, videos: [] },
             { id: 'daul', ytId: 'UC36Wcr0fy23W643DhG_U7HQ', category: 'health', name: '다울아이TV', description: '권향화 원장 / 모유수유 및 신생아 케어', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Daul', specialty: '신생아 육아 전문가', isLicensed: true, videos: [] },
             { id: 'alzam', ytId: 'UCu0kTvATHuKxyu_0o8937uw', category: 'health', name: '알잠TV', description: '소아과 전문의 / 수면 교육 전문가', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alzam', specialty: '소아과 전문의', isLicensed: true, videos: [] },
-            { id: 'jym', ytId: 'UC_AfDhGrbbL6CKr5nxx_Fow', category: 'health', name: '삐뽀삐뽀 정유미 TV', description: '소아청소년과 전문의 / 모유수유 전문가', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JYM', specialty: '소아청소년과 전문의', isLicensed: true, videos: [] },
+            { id: 'jym', ytId: 'UC_AfDhGrbbL6CKr5nxx_Fow', category: 'health', name: '삐뽀뽀 정유미 TV', description: '소아청소년과 전문의 / 모유수유 전문가', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JYM', specialty: '소아청소년과 전문의', isLicensed: true, videos: [] },
+            { id: 'droh', ytId: 'UCh_aVByPiEKSlMWBrEWqemA', category: 'health', name: '닥터오채널', description: '소아과 전문의 / 과학적 육아 가이드', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=DrOh', specialty: '소아과 전문의', isLicensed: true, videos: [] },
 
             // 2. 훈육/심리 (Mind)
             { id: 'oey', ytId: 'UCo9lbsLvcgE2Ft1xXvNzELg', category: 'mind', name: '오은영 TV', description: '정신건강의학과 전문의', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=OEY', specialty: '정신건강의학과 전문의', isLicensed: true, videos: [] },
             { id: 'sunmi', ytId: 'UCScL_OHTEDNO2iattUwmvgA', category: 'mind', name: '조선미 TV', description: '임상심리전문가 / 아주대 교수', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sunmi', specialty: '임상심리학 교수', isLicensed: true, videos: [] },
             { id: 'lyj', ytId: 'UCuEuZrDg9XI65klLf2H3MGg', category: 'mind', name: '임영주TV', description: '부모교육 및 소통 심리 전문가', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LYJ', specialty: '부모 교육 전문가', isLicensed: true, videos: [] },
+            { id: 'kje', ytId: 'UCrP10y0F-K-E_9a-X0-i-oA', category: 'mind', name: '곽정은의 사생활', description: '작가 / 심리 상담 및 마음 관리 전문가', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=KJE', specialty: '심리 상담 전문가', isLicensed: false, videos: [] },
             { id: 'lby', ytId: 'UCsRafIUFtcYHoS4pJZ_4LzA', category: 'mind', name: '이보연 TV', description: '놀이치료 및 훈육 전문가', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LBY', specialty: '아동 발달 전문가', isLicensed: true, videos: [] },
             { id: 'growingmom', ytId: 'UCofql6hTv5owvjkpotkAAbA', category: 'mind', name: '그로잉맘', description: '기질 분석 및 육아 상담 전문가', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=GrowingMom', specialty: '기질 심리 전문가', isLicensed: false, videos: [] },
             { id: 'way', ytId: 'UCXe8kMnNwdBFgW3Kb7baFcA', category: 'mind', name: '정우열의 생각부자', description: '정신건강의학과 전문의', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Way', specialty: '부모 심리 전문가', isLicensed: true, videos: [] },
@@ -58,19 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 3. 교육/학습 (Edu)
             { id: 'bessa', ytId: 'UC2JiKN5Il0dNmaMgsdW1I6A', category: 'edu', name: '베싸TV', description: '팩트 기반 데이터 육아 및 교육', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Bessa', specialty: '과학적 육아 전문가', isLicensed: false, videos: [] },
             { id: 'dawnmoon', ytId: 'UC6U499D5uKjV9R8L8H0b9jA', category: 'edu', name: '새벽달TV', description: '엄마표 영어 및 자녀 교육 저자', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=DawnMoon', specialty: '영어 육아 전문가', isLicensed: false, videos: [] },
-            { id: 'congsem', ytId: 'UC_u62vD3S7R8v1_8A90X_Qw', category: 'edu', name: '콩나물쌤', description: '초등 교육 및 기초 학력 전문가', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CongSem', specialty: '자녀 교육 전문가', isLicensed: true, videos: [] },
-
-            // --- Additional Dynamic Experts Expansion ---
-            ...Array.from({ length: 142 }, (_, i) => ({
-                id: `expert_${i + 9}`,
-                category: ['health', 'mind', 'edu', 'niche'][i % 4],
-                name: ['박쌤의 육아교실', '이지 언어 코칭', '초보 전문 멘토', '영재 교육 마스터'][i % 4] + ` ${i + 9}`,
-                description: '전문가의 지식과 경험을 공유하는 채널입니다.',
-                img: `https://api.dicebear.com/7.x/avataaars/svg?seed=Expert${i + 9}`,
-                specialty: ['전문의', '치료사', '교수', '교사'][i % 4],
-                isLicensed: i % 3 !== 0,
-                videos: []
-            }))
+            { id: 'congsem', ytId: 'UC_u62vD3S7R8v1_8A90X_Qw', category: 'edu', name: '콩나물쌤', description: '초등 교육 및 기초 학력 전문가', img: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CongSem', specialty: '자녀 교육 전문가', isLicensed: true, videos: [] }
         ]
     };
 
